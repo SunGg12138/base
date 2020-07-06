@@ -1,0 +1,34 @@
+{
+  "name": "base-koa",
+  "version": "1.0.0",
+  "description": "每个分支代表每个项目基础，可以直接下载使用",
+  "main": "index.js",
+  "scripts": {
+    "start": "./src/bin/www",
+    "test": "node_modules/mocha/bin/_mocha src/test --timeout 999999"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SunGg12138/base.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SunGg12138/base/issues"
+  },
+  "homepage": "https://github.com/SunGg12138/base#readme",
+  "dependencies": {
+    "config": "3.3.1",
+    "koa": "2.13.0",
+    "koa-router": "9.1.0",
+    "koa-static": "5.0.0",
+    "moment": "^2.27.0",
+    "require-dir": "1.2.0"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^8.0.1",
+    "supertest": "^4.0.2"
+  }
+}
