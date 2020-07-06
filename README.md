@@ -1,4 +1,6 @@
-# koa 基础项目
+# koa-sequelize 基础项目
+
+koa + sequelize + mysql
 
 ## 项目结构
 
@@ -10,6 +12,7 @@
     - middlewares // 中间件文件夹
         - catchError // 捕捉错误中间件
         - visit // 访问中间件
+    - models // 数据库管理模块
     - routes // 路由文件夹
         - v1 // v1版本路由文件夹
     - test // 测试文件夹

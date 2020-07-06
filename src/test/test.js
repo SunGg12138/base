@@ -16,4 +16,9 @@ describe('mocha test', function () {
         expect(res.body).have.property('msg');
         expect(typeof res.body.msg).equal('string');
     });
+
+    it('koa-sequelize 接口测试', async function(){
+        let res = await request(app).get('/api/v1/base/user/list').expect(200);
+        expect(res.body).to.be.an('array')
+    });
 });
