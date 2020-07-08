@@ -1,10 +1,12 @@
 {
   "name": "base-koa",
   "version": "1.0.0",
-  "description": "每个分支代表每个项目基础，可以直接下载使用",
+  "description": "koa 基础项目",
   "main": "index.js",
   "scripts": {
-    "start": "./src/bin/www",
+    "start": "node ./src/bin/www",
+    "dev": "NODE_ENV=development node ./src/bin/www",
+    "prod": "NODE_ENV=production node ./src/bin/www",
     "test": "node_modules/mocha/bin/_mocha src/test --timeout 999999"
   },
   "repository": {

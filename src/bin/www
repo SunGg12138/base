@@ -5,5 +5,5 @@ const config = require('config');
 const PORT = Number(process.env.HTTP_PORT) || config.port;
 
 app.listen(PORT, function(){
-    console.log('server run at the port:', PORT);
+    console.log('server run at the port:', PORT, ', NODE_ENV:', process.env.NODE_ENV);
 });

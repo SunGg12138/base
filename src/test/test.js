@@ -11,6 +11,12 @@ describe('mocha test', function () {
         expect(typeof res.body.branch).equal('string');
     });
 
+    it('404 错误测试', async function(){
+        let res = await request(app).post('/api/v1/base/' + Date.now()).expect(404);
+        expect(res.body).have.property('msg');
+        expect(typeof res.body.msg).equal('string');
+    });
+
     it('500 错误测试', async function(){
         let res = await request(app).get('/api/v1/base/error').expect(500);
         expect(res.body).have.property('msg');
