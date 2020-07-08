@@ -1,7 +1,7 @@
 {
   "name": "koa-sequelize",
   "version": "1.0.0",
-  "description": "koa 基础项目",
+  "description": "koa-sequelize 基础项目",
   "main": "index.js",
   "scripts": {
     "start": "node ./src/bin/www",
