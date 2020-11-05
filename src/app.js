@@ -9,8 +9,10 @@ app.use(require('./middlewares/error'));
 app.use(require('./middlewares/visit'));
 // 捕捉错误中间件
 app.use(require('./middlewares/catchError'));
-// api:v1 路由
-app.use(require('./routes/v1'));
+// protobuf
+app.use(require('./middlewares/protobuf'));
+// protobuf router
+app.use(require('./routes/protobuf'));
 
 // 404响应
 app.use(async (ctx) => {

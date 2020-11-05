@@ -5,6 +5,7 @@ module.exports = async function (ctx, next) {
     try {
         await next();
     } catch (error) {
+        console.log(error);
         ctx.error.server(error);
     }
 };

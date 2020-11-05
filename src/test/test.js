@@ -1,25 +1,47 @@
 const expect = require('chai').expect;
 const request = require('supertest');
 const app = require('../app').callback();
+const mocha_utils = require('./mocha_utils');
+const protobuf = require('../protos');
 
 describe('mocha test', function () {
     it('200 接口测试', async function(){
-        let res = await request(app).get('/api/v1/base').expect(200);
-        expect(res.body).have.property('base_type');
-        expect(typeof res.body.base_type).equal('string');
-        expect(res.body).have.property('branch');
-        expect(typeof res.body.branch).equal('string');
+        let req = request(app).post('/');
+        req.type('application/octet-stream');
+        req.parse(mocha_utils.parser);
+        req.write(protobuf.encodeRequest({
+            head_frame: { msg_type: protobuf.root.MsgType.GET_BASE_REQ, timestamp: Date.now() },
+            request_frame: { get_base_req: { test: true } }
+        }));
+        const res = await req;
+        expect(res.body.result_frame).have.property('code').and.equal(0);
+        expect(res.body.response_frame).have.property('get_base_res');
+        expect(res.body.response_frame.get_base_res.test).to.be.ok;
     });
 
-    it('404 错误测试', async function(){
-        let res = await request(app).post('/api/v1/base/' + Date.now()).expect(404);
-        expect(res.body).have.property('msg');
-        expect(typeof res.body.msg).equal('string');
+    it('不存在的错误测试', async function(){
+        let req = request(app).post('/');
+        req.type('application/octet-stream');
+        req.parse(mocha_utils.parser);
+        req.write(protobuf.encodeRequest({
+            head_frame: { msg_type: 0, timestamp: Date.now() },
+            request_frame: {}
+        }));
+        const res = await req;
+
+        expect(res.body.result_frame.msg).equal('msg_type参数不存在');
     });
 
-    it('500 错误测试', async function(){
-        let res = await request(app).get('/api/v1/base/error').expect(500);
-        expect(res.body).have.property('msg');
-        expect(typeof res.body.msg).equal('string');
+    it('错误测试', async function(){
+        let req = request(app).post('/');
+        req.type('application/octet-stream');
+        req.parse(mocha_utils.parser);
+        req.write(protobuf.encodeRequest({
+            head_frame: { msg_type: protobuf.root.MsgType.GET_ERROR_REQ, timestamp: Date.now() },
+            request_frame: { get_error_req: { test: true } }
+        }));
+        const res = await req;
+
+        expect(res.body.result_frame.msg).equal('意外的错误');
     });
 });

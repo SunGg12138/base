@@ -22,10 +22,13 @@
   "homepage": "https://github.com/SunGg12138/base#readme",
   "dependencies": {
     "config": "3.3.1",
+    "inflation": "^2.0.0",
     "koa": "2.13.0",
     "koa-router": "9.1.0",
     "koa-static": "5.0.0",
     "moment": "^2.27.0",
+    "protobufjs": "^6.10.1",
+    "raw-body": "^2.4.1",
     "require-dir": "1.2.0"
   },
   "devDependencies": {
