@@ -5,23 +5,30 @@ const protobuf = require('../protos');
  * protobuf解析请求信息
  */
 module.exports = async function (ctx, next) {
-    if (ctx.request.path === '/protobuf') {
-        // protobuf数据
-        ctx.protobuf = function (message, result) {
-            if (result) {
-                ctx.body = protobuf.encodeResponse({
-                    result_frame: result
-                });
+    // 设置body时做处理
+    Object.defineProperty(ctx, 'body', {
+        set (val) {
+            ctx._body = val;
+        },
+        get () {
+            if (ctx.request.path !== '/protobuf') return ctx._body;
+            let result_frame, response_frame;
+            if (ctx.status === 404)  {
+                result_frame = { code: 0, msg: 'ok' };
+                response_frame = {
+                    [ctx.res_field]: ctx._body
+                };
             } else {
-                ctx.body = protobuf.encodeResponse({
-                    result_frame: { code: 0, msg: 'ok' },
-                    response_frame: {
-                        [ctx.res_field]: message
-                    }
-                });
+                result_frame = ctx._body;
             }
-        };
+            return protobuf.encodeResponse({
+                result_frame,
+                response_frame
+            });
+        }
+    });
 
+    if (ctx.request.path === '/protobuf') {
         // 二进制数据
         const req_buffer = await raw(inflate(ctx.req), { encoding: null });
         const req_data = protobuf.decodeRequest(req_buffer);

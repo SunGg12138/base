@@ -8,7 +8,7 @@ describe('mocha test', function () {
     it('200 接口测试', async function(){
         let req = request(app).post('/protobuf');
         req.type('application/octet-stream');
-        req.parse(mocha_utils.parser);
+        req.parse(mocha_utils.protobufParser);
         req.write(protobuf.encodeRequest({
             head_frame: { msg_type: protobuf.root.MsgType.GET_BASE_REQ, timestamp: Date.now() },
             request_frame: { get_base_req: { test: true } }
@@ -22,7 +22,7 @@ describe('mocha test', function () {
     it('不存在的错误测试', async function(){
         let req = request(app).post('/protobuf');
         req.type('application/octet-stream');
-        req.parse(mocha_utils.parser);
+        req.parse(mocha_utils.protobufParser);
         req.write(protobuf.encodeRequest({
             head_frame: { msg_type: 0, timestamp: Date.now() },
             request_frame: {}
@@ -35,7 +35,7 @@ describe('mocha test', function () {
     it('错误测试', async function(){
         let req = request(app).post('/protobuf');
         req.type('application/octet-stream');
-        req.parse(mocha_utils.parser);
+        req.parse(mocha_utils.protobufParser);
         req.write(protobuf.encodeRequest({
             head_frame: { msg_type: protobuf.root.MsgType.GET_ERROR_REQ, timestamp: Date.now() },
             request_frame: { get_error_req: { test: true } }

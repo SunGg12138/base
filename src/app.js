@@ -13,6 +13,8 @@ app.use(require('./middlewares/catchError'));
 app.use(require('./middlewares/protobuf'));
 // protobuf router
 app.use(require('./routes/protobuf'));
+// API v1
+app.use(require('./routes/v1'));
 
 // 404响应
 app.use(async (ctx) => {
