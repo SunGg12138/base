@@ -5,7 +5,7 @@ const protobuf = require('../protos');
  * protobuf解析请求信息
  */
 module.exports = async function (ctx, next) {
-    if (ctx.get('content-type') === 'application/octet-stream') {
+    if (ctx.request.path === '/protobuf') {
         // protobuf数据
         ctx.protobuf = function (message, result) {
             if (result) {

@@ -6,7 +6,7 @@ const protobuf = require('../protos');
 
 describe('mocha test', function () {
     it('200 接口测试', async function(){
-        let req = request(app).post('/');
+        let req = request(app).post('/protobuf');
         req.type('application/octet-stream');
         req.parse(mocha_utils.parser);
         req.write(protobuf.encodeRequest({
@@ -20,7 +20,7 @@ describe('mocha test', function () {
     });
 
     it('不存在的错误测试', async function(){
-        let req = request(app).post('/');
+        let req = request(app).post('/protobuf');
         req.type('application/octet-stream');
         req.parse(mocha_utils.parser);
         req.write(protobuf.encodeRequest({
@@ -33,7 +33,7 @@ describe('mocha test', function () {
     });
 
     it('错误测试', async function(){
-        let req = request(app).post('/');
+        let req = request(app).post('/protobuf');
         req.type('application/octet-stream');
         req.parse(mocha_utils.parser);
         req.write(protobuf.encodeRequest({

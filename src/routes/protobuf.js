@@ -17,7 +17,7 @@ const MSG_CONFIGS = {
 };
 
 module.exports = async function (ctx, next) {
-    if (ctx.get('content-type') === 'application/octet-stream') {
+    if (ctx.request.path === '/protobuf') {
         const msg_config = MSG_CONFIGS[ctx.request.msg_type];
         const request_frame = ctx.request.request_frame;
     
