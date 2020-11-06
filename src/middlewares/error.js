@@ -5,35 +5,71 @@ module.exports = async function (ctx, next) {
     ctx.error = {
         param() {
             ctx.status = 400;
-            ctx.protobuf(null, { msg: '参数不全' });
+            const msg = { msg: '参数不全' };
+            if (typeof ctx.protobuf === 'function') {
+                ctx.protobuf(null, msg);
+            } else {
+                ctx.body = msg;
+            }
         },
         paramError() {
             ctx.status = 400;
-            ctx.protobuf(null, { msg: '参数错误' });
+            const msg = { msg: '参数错误' };
+            if (typeof ctx.protobuf === 'function') {
+                ctx.protobuf(null, msg);
+            } else {
+                ctx.body = msg;
+            }
         },
         auth() {
             ctx.status = 401;
-            ctx.protobuf(null, { msg: '权限不足' });
+            const msg = { msg: '权限不足' };
+            if (typeof ctx.protobuf === 'function') {
+                ctx.protobuf(null, msg);
+            } else {
+                ctx.body = msg;
+            }
         },
         loginInvalid() {
             ctx.status = 401;
-            ctx.protobuf(null, { msg: '登录失效' });
+            const msg = { msg: '登录失效' };
+            if (typeof ctx.protobuf === 'function') {
+                ctx.protobuf(null, msg);
+            } else {
+                ctx.body = msg;
+            }
         },
         notFound() {
             ctx.status = 404;
-            ctx.protobuf(null, { msg: 'not found' });
+            const msg = { msg: 'not found' };
+            if (typeof ctx.protobuf === 'function') {
+                ctx.protobuf(null, msg);
+            } else {
+                ctx.body = msg;
+            }
         },
         // 服务异常错误
         server(error) {
             ctx.status = 500;
-            ctx.protobuf(null, { msg: '意外的错误' });
+            const msg = { msg: '意外的错误' };
+            if (typeof ctx.protobuf === 'function') {
+                ctx.protobuf(null, msg);
+            } else {
+                ctx.body = msg;
+            }
+            console.log('意外的错误:', error);
         },
         // 自定义消息
         msg(msg) {
             ctx.status = 400;
-            ctx.protobuf(null, { msg });
-        }
+            if (typeof ctx.protobuf === 'function') {
+                ctx.protobuf(null, { msg });
+            } else {
+                ctx.body = msg;
+            }
+        },
     };
+
 
     await next();
 };

@@ -40,6 +40,6 @@ module.exports = async function (ctx, next) {
 
         await next();
     } else {
-        console.log('无效的content-type');
+        await next();
     }
 };

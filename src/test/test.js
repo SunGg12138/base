@@ -44,4 +44,11 @@ describe('mocha test', function () {
 
         expect(res.body.result_frame.msg).equal('意外的错误');
     });
+
+    it('http 404', async function(){
+        let res = await request(app).post('/404').send({ test: 1 });
+        
+        expect(res.body.msg).equal('not found');
+        expect(res.status).equal(404);
+    });
 });
