@@ -1,20 +1,5 @@
-const { root: { MsgType } } = require('../protos');
-const Service = require('../services/base');
-
-const MSG_CONFIGS = {
-    [MsgType.GET_BASE_REQ]: {
-        service: Service.index,
-        req_field: 'get_base_req',
-        res_type: MsgType.GET_BASE_RES,
-        res_field: 'get_base_res',
-    },
-    [MsgType.GET_ERROR_REQ]: {
-        service: Service.error,
-        req_field: 'get_error_req',
-        res_type: MsgType.GET_ERROR_RES,
-        res_field: 'get_error_res',
-    }
-};
+const requireDir = require('require-dir')();
+const MSG_CONFIGS = Object.assign.apply({}, Object.values(requireDir));
 
 module.exports = async function (ctx, next) {
     if (ctx.request.path === '/protobuf') {
