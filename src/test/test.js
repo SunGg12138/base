@@ -45,6 +45,11 @@ describe('mocha test', function () {
         expect(res.body.result_frame.msg).equal('意外的错误');
     });
 
+    it('http 接口', async function(){
+        let res = await request(app).post('/api/v1/base/').send({ test: 1 }).expect(200);
+        expect(res.body.test).equal(1);
+    });
+
     it('http 404', async function(){
         let res = await request(app).post('/404').send({ test: 1 });
         

@@ -6,27 +6,25 @@ const protobuf = require('../protos');
  */
 module.exports = async function (ctx, next) {
     // 设置body时做处理
-    Object.defineProperty(ctx, 'body', {
-        set (val) {
-            ctx._body = val;
-        },
-        get () {
-            if (ctx.request.path !== '/protobuf') return ctx._body;
+    ctx.setBody = function (body) {
+        if (ctx.request.path === '/protobuf') {
             let result_frame, response_frame;
             if (ctx.status === 404)  {
                 result_frame = { code: 0, msg: 'ok' };
                 response_frame = {
-                    [ctx.res_field]: ctx._body
+                    [ctx.res_field]: body
                 };
             } else {
-                result_frame = ctx._body;
+                result_frame = body;
             }
-            return protobuf.encodeResponse({
+            ctx.body = protobuf.encodeResponse({
                 result_frame,
                 response_frame
             });
+        } else {
+            ctx.body = body;
         }
-    });
+    };
 
     if (ctx.request.path === '/protobuf') {
         // 二进制数据

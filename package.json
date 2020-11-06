@@ -24,6 +24,7 @@
     "config": "3.3.1",
     "inflation": "^2.0.0",
     "koa": "2.13.0",
+    "koa-bodyparser": "^4.3.0",
     "koa-router": "9.1.0",
     "koa-static": "5.0.0",
     "moment": "^2.27.0",

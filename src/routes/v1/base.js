@@ -1,7 +1,7 @@
 const router = require('koa-router')();
 const Service = require('../../services/base');
 
-router.get('/', Service.index);
-router.get('/error', Service.error);
+router.post('/', Service.index);
+router.post('/error', Service.error);
 
 module.exports = router.routes();
