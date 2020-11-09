@@ -10,20 +10,27 @@ exports.encode = async function (ctx, next) {
     await next();
 
     if (ctx.request.path === '/protobuf') {
-        // 响应前修改body内容
-        let result_frame, response_frame;
-        if (ctx.status < 300)  {
-            result_frame = { code: 0, msg: 'ok' };
-            response_frame = {
-                [ctx.res_field]: ctx.body
-            };
-        } else {
-            result_frame = ctx.body;
+        try {
+            // 响应前修改body内容
+            let result_frame, response_frame;
+            if (ctx.status < 300)  {
+                result_frame = { code: 0, msg: 'ok' };
+                response_frame = {
+                    [ctx.res_field]: ctx.body
+                };
+            } else {
+                result_frame = ctx.body;
+            }
+            ctx.body = protobuf.encodeResponse({
+                result_frame,
+                response_frame
+            });
+        } catch (error) {
+            console.log('protobuf加密响应的数据出错：');
+            console.log(error);
+            ctx.status = 500;
+            ctx.body = null;
         }
-        ctx.body = protobuf.encodeResponse({
-            result_frame,
-            response_frame
-        });
     }
 };
 
