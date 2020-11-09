@@ -2,6 +2,8 @@ const Koa = require('koa');
 const app = new Koa();
 const bodyParser = require('koa-bodyparser');
 
+// protobuf encode
+app.use(require('./middlewares/protobuf').encode);
 // 允许跨域
 app.use(require('./middlewares/cors'));
 // 响应错误的中间件
@@ -12,8 +14,8 @@ app.use(bodyParser());
 app.use(require('./middlewares/visit'));
 // 捕捉错误中间件
 app.use(require('./middlewares/catchError'));
-// protobuf
-app.use(require('./middlewares/protobuf'));
+// protobuf decode
+app.use(require('./middlewares/protobuf').decode);
 // protobuf router
 app.use(require('./routes/protobuf'));
 // API v1

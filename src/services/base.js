@@ -1,5 +1,5 @@
 exports.index = async (ctx) => {
-    ctx.setBody({ test: ctx.request.body.test });
+    ctx.body = { test: ctx.request.body.test };
 };
 
 exports.error = async (ctx) => {

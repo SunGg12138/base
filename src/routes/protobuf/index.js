@@ -15,7 +15,7 @@ module.exports = async function (ctx, next) {
         ctx.res_type = res_type;
         ctx.request.body = request_frame[req_field];
     
-        return service(ctx);
+        await service(ctx);
     } else {
         await next();
     }
