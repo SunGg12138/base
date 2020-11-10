@@ -1,0 +1,109 @@
+{
+  "nested": {
+    "test": {
+      "nested": {
+        "ResponseResultFrame": {
+          "fields": {
+            "code": {
+              "type": "uint32",
+              "id": 1
+            },
+            "msg": {
+              "type": "string",
+              "id": 2
+            }
+          }
+        },
+        "ResponseFrame": {
+          "fields": {
+            "get_base_res": {
+              "type": "GET_BASE_RES",
+              "id": 1
+            }
+          },
+          "nested": {
+            "GET_BASE_RES": {
+              "fields": {
+                "test": {
+                  "type": "bool",
+                  "id": 1
+                }
+              }
+            }
+          }
+        },
+        "RequestPackage": {
+          "fields": {
+            "head_frame": {
+              "type": "RequestHeadFrame",
+              "id": 1
+            },
+            "request_frame": {
+              "type": "RequestFrame",
+              "id": 2
+            }
+          }
+        },
+        "ResponsePackage": {
+          "fields": {
+            "result_frame": {
+              "type": "ResponseResultFrame",
+              "id": 1
+            },
+            "response_frame": {
+              "type": "ResponseFrame",
+              "id": 2
+            }
+          }
+        },
+        "RequestHeadFrame": {
+          "fields": {
+            "msg_type": {
+              "type": "uint32",
+              "id": 1
+            },
+            "timestamp": {
+              "type": "uint32",
+              "id": 2
+            }
+          }
+        },
+        "GET_BASE_REQ": {
+          "fields": {
+            "test": {
+              "type": "bool",
+              "id": 1
+            }
+          }
+        },
+        "GET_ERROR_REQ": {
+          "fields": {
+            "test": {
+              "type": "bool",
+              "id": 1
+            }
+          }
+        },
+        "RequestFrame": {
+          "fields": {
+            "get_base_req": {
+              "type": "GET_BASE_REQ",
+              "id": 1
+            },
+            "get_error_req": {
+              "type": "GET_ERROR_REQ",
+              "id": 2
+            }
+          }
+        }
+      }
+    },
+    "MsgType": {
+      "values": {
+        "GET_BASE_REQ": 10,
+        "GET_BASE_RES": 11,
+        "GET_ERROR_REQ": 20
+      }
+    }
+  }
+}
