@@ -13,7 +13,8 @@ module.exports = async function (ctx, next) {
     
         ctx.res_field = res_field;
         ctx.res_type = res_type;
-        ctx.request.body = request_frame[req_field];
+        // 支持http的GET和POST
+        ctx.request.query = ctx.request.body = request_frame[req_field];
     
         await service(ctx);
     } else {
