@@ -1,7 +1,0 @@
-syntax = "proto3";
-
-enum MsgType {
-    GET_BASE_REQ = 10;
-    GET_BASE_RES = 11;
-    GET_ERROR_REQ = 20;
-}
