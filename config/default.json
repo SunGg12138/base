@@ -1,0 +1,6 @@
+{
+    "port": 9002,
+    "alarm": {
+        "webhook_url": "https://open.feishu.cn/open-apis/bot/v2/hook/bfba47d7-7368-43f1-b339-a4aad6a6fbfc"
+    }
+}
