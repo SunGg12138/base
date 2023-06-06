@@ -1,0 +1,47 @@
+{
+    "port": 3003,
+    "alarm": {
+        "theme": "照护令牌",
+        "webhook_url": "https://open.feishu.cn/open-apis/bot/v2/hook/bfba47d7-7368-43f1-b339-a4aad6a6fbfc"
+    },
+    "feishu": {
+        "app_id": "cli_a4fee651edfc100e",
+        "app_secret": "63JSlUrhtwkTfZnHG59uMf83mtZwrrM1",
+        "robot": {
+            "encrypt_key": "kQlsATeDFQxu7quRVwacnbeKRmAXntCC",
+            "verification_token": "8VRfPFiw08u0nu6Rc2vIjgGrUEY6edYm"
+        },
+        "card": {
+            "error": "ctp_AAr5ye8UqZgd",
+            "warn": "ctp_AAgbyYhkMhc9",
+            "message": "ctp_AAgbCz90YnYY",
+            "usefor": "ctp_AAglr22bb6Ng"
+        }
+    },
+    "mongodb": {
+        "url": "mongodb://dbOperator:iHEaltHm2oNgo2u!Ser@192.168.0.127:8868,192.168.0.144:8868/paper-king-developing?replicaSet=replica&authSource=admin"
+    },
+    "redis": {
+        "port": 32634,
+        "host": "192.168.0.104",
+        "password": "ertDF323IOFs9"
+    },
+    "code": {
+        "duration": 600,
+        "type_selects": [
+            {
+                "text": "共同照护APP",
+                "value": "app"
+            },
+            {
+                "text": "共同照护管理系统",
+                "value": "web"
+            },
+            {
+                "text": "共同照护培训系统",
+                "value": "edu"
+            }
+        ],
+        "card_duration": 86400
+    }
+}

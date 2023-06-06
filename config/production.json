@@ -1,0 +1,10 @@
+{
+    "feishu": {
+        "app_id": "cli_a4fa982bad7d500d",
+        "app_secret": "EFD6pWmMDds5xeyIkblnMhKm6gQtj05K",
+        "robot": {
+            "encrypt_key": "mKrkzcKD86iXKd2EgWvDpbDDG0sdkBtw",
+            "verification_token": "v1KWBNfkAceuMNkuLgOAJb01SfAwgger"
+        }
+    }
+}

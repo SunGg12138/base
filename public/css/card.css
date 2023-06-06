@@ -1,0 +1,47 @@
+.card-box {
+    width: 1280px;
+    margin: 0 auto;
+    display: flex;
+    flex-flow: row wrap;
+    align-content: flex-start;
+}
+.card-warp {
+    flex: 0 0 25%;
+    padding: 8px 0;
+}
+.card {
+    width: 300px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 8px;
+    cursor: pointer;
+    display: flex;
+    justify-content: flex-start;
+    box-sizing: border-box;
+}
+.card:hover {
+    box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.4);
+}
+.card .icon {
+    width: 60px;
+    height: 60px;
+}
+.card .content {
+    padding-left: 8px;
+}
+.card .content a {
+    text-decoration: none;
+}
+.card .content a:hover {
+    text-decoration: underline;
+}
+.card .content .title a {
+    font-size: 16px;
+    color: #333;
+    line-height: 1.8;
+}
+.card .content .caption a {
+    font-size: 12px;
+    color: #999;
+    line-height: 1.4;
+}
